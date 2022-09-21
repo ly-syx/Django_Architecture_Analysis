@@ -1,2 +1,2 @@
-# Django_Design_and_Architecture
-Software Design and Architecture —— analysis Django
+# Django_Architecture_Analysis
+Software Design and Architecture —— analysis of Django
