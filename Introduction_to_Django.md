@@ -44,7 +44,7 @@ Django is a high-level Python web framework that encourages rapid development an
 	**T** is for "Template": responsible for how the page (HTML) is presented to the user.
 	**V** is for "View": takes care of the logic business and calls Model and Template when appropriate.
 
-<img src="./context.png" style="zoom:45%;" />
+<img src="architecture diagram.png" style="zoom:65%;" />
 
 
 
@@ -134,4 +134,24 @@ Django is a high-level Python web framework that encourages rapid development an
 + Rapid
 + Usability
 + Extensible
+
+
+
+## Architecture
+
+### Architecture Diagram
+
+<img src="architecture diagram.png" style="zoom:65%;" />
+
+
+
+###  In a Decision View
+
++ At the beginning of the project, the designers considered Django as a **tool library** of Python that would reduce web application development work, avoid programmer making wheels repeatedly. So, the programmer thought the Django should provide some general functions, such as API/URL Management, Caching Management, Database Operation and so on.
+
++ And it's would be **easy to learn and use**. While, Django couldn't provide every specific function for various projects developed based on the Django framework. So it should be **extensible** and allow users to define their business logic and display logic. In order to ensure a highly flexibility, it would be **loosely coupled** so that every module could maintain or modify more easily.
+
++ In order to implement the above attributes, the designers design the following architecture:
+
+    <img src="earliest architecture Diagram.png" alt="architecture diagram" style="zoom:46%;"/>
 
