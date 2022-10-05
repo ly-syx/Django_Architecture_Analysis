@@ -44,7 +44,7 @@ Django is a high-level Python web framework that encourages rapid development an
 	**T** is for "Template": responsible for how the page (HTML) is presented to the user.
 	**V** is for "View": takes care of the logic business and calls Model and Template when appropriate.
 
-<img src="architecture diagram.png" style="zoom:65%;" />
+<img src="./architecture diagram.png" style="zoom:65%;" />
 
 
 
@@ -141,7 +141,7 @@ Django is a high-level Python web framework that encourages rapid development an
 
 ### Architecture Diagram
 
-<img src="architecture diagram.png" style="zoom:65%;" />
+<img src="./architecture diagram.png" style="zoom:65%;" />
 
 
 
@@ -153,5 +153,5 @@ Django is a high-level Python web framework that encourages rapid development an
 
 + In order to implement the above attributes, the designers design the following architecture:
 
-    <img src="earliest architecture Diagram.png" alt="architecture diagram" style="zoom:46%;"/>
+    <img src="./earliest architecture diagram.png" alt="architecture diagram" style="zoom:46%;"/>
 
