@@ -26,8 +26,25 @@ Django is a high-level Python web framework that encourages rapid development an
 
 ## Context:
 
-+ Django was invented to meet fast-moving newsroom deadlines, while satisfying the tough requirements of experienced web developers. Because Django was developed in a fast-paced newsroom environment, it was designed to make common web development tasks fast and easy. 
-+ With Django, you can take web applications from concept to launch in a matter of hours. Django takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.
++ **Origin**
+
+	Django was invented to meet fast-moving newsroom deadlines, while satisfying the tough requirements of experienced web developers. Because Django was developed in a fast-paced newsroom environment, it was designed to make common web development tasks fast and easy. 
+
+	With Django, you can take web applications from concept to launch in a matter of hours. Django takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.
+
++ **Web framework based on Python**
+
+	Django is an open source web framework written in Python with full shelf capability. In addition to encapsulating network and thread operations, Django provides a framework for HTTP requests and responses, database management, HTML template rendering, and more.
+
++ **MTV framework**
+
+	Django is a “MTV” framework , which means “model” “template” and “view.”
+
+	**M** is for "Model": contains the basic functions, and are responsible for mapping business objects to the database (Object Relational Mapping, ORM).
+	**T** is for "Template": responsible for how the page (HTML) is presented to the user.
+	**V** is for "View": takes care of the logic business and calls Model and Template when appropriate.
+
+<img src="./context.png" style="zoom:45%;" />
 
 
 
