@@ -10,6 +10,10 @@ Django is a high-level Python web framework that encourages rapid development an
 
 + Django was designed to help developers take applications from concept to completion as quickly as possible.
 
+### Fully loaded.
+
++ Django includes dozens of extras you can use to handle common web development tasks. Django takes care of user authentication, content administration, site maps, RSS feeds, and many more tasks — right out of the box.
+
 ### Reassuringly secure
 
 + Django takes security seriously and helps developers avoid many common security mistakes, such as SQL injection, cross-site scripting, cross-site request forgery and clickjacking. Its user authentication system provides a secure way to manage user accounts and passwords.
@@ -145,31 +149,74 @@ Django is a high-level Python web framework that encourages rapid development an
 
 
 
-###  In a Decision View
+##  In a Decision View
 
-+ At the beginning of the project, the designers considered Django as a **tool library** of Python that would reduce web application development work, avoid programmer making wheels repeatedly. 
++ At the beginning of the project, the designers considered Django as a **tool library** of Python that would reduce web application development work, so programmers can focus on writing their app without needing to reinvent the wheel. 
 
-+ So, the designers make following decisions:
++ The designers make following decisions:
 
-    1. **Provide General Function**:
+    1. **Easy to Use**:
 
-        The programmer thought the Django should provide some general functions, such as API/URL Management, Caching Management, Database Operation and so on.
+        Django was designed to help developers take applications from concept to completion as quickly as possible.  
 
-    2. **Easy to Learn and Use**:
+        **Related Decisions**:
 
-        A tool library with a high threshold is not a good library. In order to attract more developers, the toolkit should be easy to use, and the internal definition should be explicit, instead of confusing.
-
-    3. **Extensible**:
-
-        While, Django couldn't provide every specific function for various projects developed based on the Django framework. So it should be **extensible** and allow users to define their business logic and display logic. 
-
-    4. **Loosely Coupled**:
-
-        In order to ensure a highly flexibility, it would be **loosely coupled** so that every module could maintain or modify more easily.
+        Django provide many general functions modules, such as API/URL Management, Caching Management, Database Operation and so on. 
 
         
 
-+ In order to implement the above attributes, the designers design the following architecture:
+    2. **Scalable**:
 
-<img src="./earliest architecture diagram.png" alt="architecture diagram" style="zoom:46%;"/>
+        For some of the busiest sites on the planet, they may have tens of thousands of visits per second during peak traffic periods. So Django should have ability to quickly and flexibly scale to meet the heaviest traffic demands.
 
+        **Related Decisions**:
+
+        Django uses a “shared-nothing” architecture, which means you can add hardware at any level – database servers, caching servers or web/application servers. 
+
+        
+
+    3. **Loosely Coupled**:
+
+        In order to ensure a highly flexibility, it would be **loosely coupled** so that every module could maintain or modify more easily.
+
+        **Related Decisions**:
+
+        Django uses a "MVT" framework to separates the the business logic, display logic and the data manage logic. And Django cleanly separates components such as its database layer and application layer.
+
+
+
+## Stakeholder And the Specific Concerns
+
+The stakeholders are **users, developing department, maintenance organization:**
+
+### **The specific concerns of stakeholders:**
+
+#### User:
+
++ What functionality does the Django provide?
++ How well does it perform?
++ Whether is it scalable?
++ Whether is it secure?
++ Whether is it easy to use?
++ Whether is stable?
+
+#### Developing department:
+
++ Whether could it delivery timely?
++ Whether is it developed at low cost and low work?
+
+#### Maintenance organization:
+
++ Whether is it modifiable?
+
+
+
+## Architecture in a Technical Context
+
+### Scalable:
+
+Because the “shared-nothing” architecture, Django supports to add hardware at any level – database servers, caching servers or web/application servers. 
+
+### Modifiable:
+
+Django uses a "MVT" framework to separates the the business logic, display logic and the data manage logic. And Django cleanly separates components such as its database layer and application layer. 
