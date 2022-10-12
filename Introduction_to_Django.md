@@ -147,11 +147,29 @@ Django is a high-level Python web framework that encourages rapid development an
 
 ###  In a Decision View
 
-+ At the beginning of the project, the designers considered Django as a **tool library** of Python that would reduce web application development work, avoid programmer making wheels repeatedly. So, the programmer thought the Django should provide some general functions, such as API/URL Management, Caching Management, Database Operation and so on.
++ At the beginning of the project, the designers considered Django as a **tool library** of Python that would reduce web application development work, avoid programmer making wheels repeatedly. 
 
-+ And it's would be **easy to learn and use**. While, Django couldn't provide every specific function for various projects developed based on the Django framework. So it should be **extensible** and allow users to define their business logic and display logic. In order to ensure a highly flexibility, it would be **loosely coupled** so that every module could maintain or modify more easily.
++ So, the designers make following decisions:
+
+    1. **Provide General Function**:
+
+        The programmer thought the Django should provide some general functions, such as API/URL Management, Caching Management, Database Operation and so on.
+
+    2. **Easy to Learn and Use**:
+
+        A tool library with a high threshold is not a good library. In order to attract more developers, the toolkit should be easy to use, and the internal definition should be explicit, instead of confusing.
+
+    3. **Extensible**:
+
+        While, Django couldn't provide every specific function for various projects developed based on the Django framework. So it should be **extensible** and allow users to define their business logic and display logic. 
+
+    4. **Loosely Coupled**:
+
+        In order to ensure a highly flexibility, it would be **loosely coupled** so that every module could maintain or modify more easily.
+
+        
 
 + In order to implement the above attributes, the designers design the following architecture:
 
-    <img src="./earliest architecture diagram.png" alt="architecture diagram" style="zoom:46%;"/>
+<img src="./earliest architecture diagram.png" alt="architecture diagram" style="zoom:46%;"/>
 
