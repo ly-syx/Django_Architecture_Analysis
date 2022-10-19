@@ -88,7 +88,7 @@ Django is a high-level Python web framework that encourages rapid development an
 
     
 
-### Extensible
+### Extensibility
 
 + **Suppose the Template from Third Parties**
 
@@ -135,9 +135,9 @@ Django is a high-level Python web framework that encourages rapid development an
 ## Key Drivers
 
 + Security
-+ Rapid
-+ Usability
 + Extensible
++ Modifiable
++ Scalable
 
 
 
@@ -175,9 +175,9 @@ Django is a high-level Python web framework that encourages rapid development an
 
         
 
-    3. **Loosely Coupled**:
+    3. **Modifiable**:
 
-        In order to ensure a highly flexibility, it would be **loosely coupled** so that every module could maintain or modify more easily.
+        In order to ensure a highly **modifiable**, it would be **loosely coupled** so that every module could maintain or modify more easily.
 
         **Related Decisions**:
 
@@ -207,16 +207,32 @@ The stakeholders are **users, developing department, maintenance organization:**
 
 #### Maintenance organization:
 
-+ Whether is it modifiable?
++ Whether is it maintainable?
 
 
 
 ## Architecture in a Technical Context
 
-### Scalable:
+### Security:
 
-Because the “shared-nothing” architecture, Django supports to add hardware at any level – database servers, caching servers or web/application servers. 
+As a web application, if the data centre is damaged or compromised, the web service will be affected, so it is important to ensure the security of the web application, and the Django framework is designed to automatically perform the right actions to protect the network, thus helping developers to avoid many common security errors.
 
-### Modifiable:
+### Reusability:
 
-Django uses a "MVT" framework to separates the the business logic, display logic and the data manage logic. And Django cleanly separates components such as its database layer and application layer. 
+Users want to save more time when developing and also want programs that are easy to maintain, in addition to having highly reusable programs that are well suited to high-load systems.
+
+### Scalability:
+
+With the rapid development of global information technology, the traditional back-end service framework can no longer meet the needs of some scenarios where traffic fluctuates instantly due to large activities or high-profile events, requiring a framework that can handle large amounts of data and traffic on the application. At the same time, it is becoming common for development teams to rent cloud servers, so it is essential that the framework is scalable.
+
+### Environment——Python: 
+
+The Django framework is built in Python and inherits the best of Python and its great community - with many useful libraries, such as some of the most popular ones, including the Django REST framework for building APIs (application programming interfaces) and the CMS-oriented framework for website CMS-oriented frameworks for content management.
+
+### API and Front-end Frameworks:
+
+Since Django inherits python's Django REST framework for building APIs (application programming interfaces), it adapts well to API request access from the main front-end frameworks on the market, such as Bootstrap, jQuery, Bootswatch, etc.
+
+### Databases Supported:
+
+PostgreSQL, MariaDB, MySQL, Oracle, SQLite
