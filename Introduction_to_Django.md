@@ -88,7 +88,7 @@ Django is a high-level Python web framework that encourages rapid development an
 
     
 
-### Extensibility
+### Extensibility & Maintainable
 
 + **Suppose the Template from Third Parties**
 
@@ -135,8 +135,7 @@ Django is a high-level Python web framework that encourages rapid development an
 ## Key Drivers
 
 + Security
-+ Extensible
-+ Modifiable
++ Maintainable
 + Scalable
 
 
@@ -155,17 +154,7 @@ Django is a high-level Python web framework that encourages rapid development an
 
 + The designers make following decisions:
 
-    1. **Easy to Use**:
-
-        Django was designed to help developers take applications from concept to completion as quickly as possible.  
-
-        **Related Decisions**:
-
-        Django provide many general functions modules, such as API/URL Management, Caching Management, Database Operation and so on. 
-
-        
-
-    2. **Scalable**:
+    1. **Scalable**:
 
         For some of the busiest sites on the planet, they may have tens of thousands of visits per second during peak traffic periods. So Django should have ability to quickly and flexibly scale to meet the heaviest traffic demands.
 
@@ -175,9 +164,9 @@ Django is a high-level Python web framework that encourages rapid development an
 
         
 
-    3. **Modifiable**:
+    2. **Maintainable**:
 
-        In order to ensure a highly **modifiable**, it would be **loosely coupled** so that every module could maintain or modify more easily.
+        In order to ensure a highly **maintainable**, it would be **loosely coupled** so that every module could maintain or modify more easily.
 
         **Related Decisions**:
 
