@@ -225,3 +225,17 @@ Since Django inherits python's Django REST framework for building APIs (applicat
 ### Databases Supported:
 
 PostgreSQL, MariaDB, MySQL, Oracle, SQLite
+
+
+
+## Scenario
+
+| Portion of Scenario | Extensible                                                   |
+| ------------------- | ------------------------------------------------------------ |
+| Source              | Internal/extensible: people, hardware, software, physical infrastructure, physical environment |
+| Stimulus            | Fault: Contention for network resources, thread synchronization, the I/O synchronization, exchange |
+| Artifact            | System’s processors, processes, data model, prototype, UML   |
+| Environment         | Normal operation, Single-node expansion, Distribute multiple machine |
+| Response            | Prevent the fault from becoming a failure Detect the fault: log the fault notify appropriate entities Recover from the fault: disable source of events causing the fault fix the fault or contain the damage it causes be temporarily unavailable while repair is being effected |
+| Response Measure    | read thread dumps and synchronize code block introduce multithreading use a mutex ensures that only one thread writes at a time use thread locks to resolve resource contention between threads |
+
