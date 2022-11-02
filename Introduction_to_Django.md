@@ -239,7 +239,7 @@ PostgreSQL, MariaDB, MySQL, Oracle, SQLite
 | Artifact            | Code, data, interfaces                                       |
 | Environment         | Build time                                                   |
 | Response            | 1. Make modification<br />2. Test modification<br />3. Deploy modification |
-| Response Measure    | Measure by the follow function:<br />Grade=Effort / (w_1\*time + w_2\*time + w_3\*Money) - w_4\*Side Effect |
+| Response Measure    | Measure by the follow function:<br />$Grade=Effort \div (w_1 \cdot time + w_2 \cdot time + w_3 \cdot Money) - w_4 \cdot Side Effect$ |
 
 
 
