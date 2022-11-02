@@ -88,7 +88,7 @@ Django is a high-level Python web framework that encourages rapid development an
 
     
 
-### Extensibility & Maintainable
+### Extensibility
 
 + **Suppose the Template from Third Parties**
 
@@ -135,8 +135,8 @@ Django is a high-level Python web framework that encourages rapid development an
 ## Key Drivers
 
 + Security
-+ Maintainable
-+ Scalable
++ Modifiability
++ Scalability
 
 
 
@@ -154,7 +154,7 @@ Django is a high-level Python web framework that encourages rapid development an
 
 + The designers make following decisions:
 
-    1. **Scalable**:
+    1. **Scalability**:
 
         For some of the busiest sites on the planet, they may have tens of thousands of visits per second during peak traffic periods. So Django should have ability to quickly and flexibly scale to meet the heaviest traffic demands.
 
@@ -164,9 +164,9 @@ Django is a high-level Python web framework that encourages rapid development an
 
         
 
-    2. **Maintainable**:
+    2. **Modifiability**:
 
-        In order to ensure a highly **maintainable**, it would be **loosely coupled** so that every module could maintain or modify more easily.
+        In order to ensure a highly **Modifiability**, it would be **loosely coupled** so that every module could maintain or modify more easily.
 
         **Related Decisions**:
 
@@ -230,12 +230,33 @@ PostgreSQL, MariaDB, MySQL, Oracle, SQLite
 
 ## Scenario
 
-| Portion of Scenario | Extensible                                                   |
-| ------------------- | ------------------------------------------------------------ |
-| Source              | Internal/extensible: people, hardware, software, physical infrastructure, physical environment |
-| Stimulus            | Fault: Contention for network resources, thread synchronization, the I/O synchronization, exchange |
-| Artifact            | System’s processors, processes, data model, prototype, UML   |
-| Environment         | Normal operation, Single-node expansion, Distribute multiple machine |
-| Response            | Prevent the fault from becoming a failure Detect the fault: log the fault notify appropriate entities Recover from the fault: disable source of events causing the fault fix the fault or contain the damage it causes be temporarily unavailable while repair is being effected |
-| Response Measure    | read thread dumps and synchronize code block introduce multithreading use a mutex ensures that only one thread writes at a time use thread locks to resolve resource contention between threads |
+**Modifiability:**
 
+| Portion of Scenario | Possible Values                                              |
+| ------------------- | ------------------------------------------------------------ |
+| Source              | Developer, system administrator                              |
+| Stimulus            | Modify some functions                                        |
+| Artifact            | Code, data, interfaces                                       |
+| Environment         | Build time                                                   |
+| Response            | 1. Make modification<br />2. Test modification<br />3. Deploy modification |
+| Response Measure    | Measure by the follow function:<br />Grade=Effort / (w_1\*time + w_2\*time + w_3\*Money) - w_4\*Side Effect |
+
+
+
+## Tactic
+
+For modifiability:
+
++ **Reduce Coupling**:
+
+    1. *Encapsulate*:
+
+        In Django, the different functions would be encapsulate in different modules. And different modules interact and collaborate with each other through their interfaces to perform complex functions. For example, the WSGI module is responsible for handling API requests, and calling the corresponding business functions through the interfaces of the modules.  WSGI doesn't care about how these functions are implemented, it just needs to know which interface to call. Encapsulation reduces the probability that a change to one module propagates to other modules.
+
+        
+
++ **Reduce the Size of a Module**:
+
+    1. *Split module*:
+
+        In Django, the project would be split into some small modules, such as views, models and templates. If the module being modified includes a great deal of capability, the modification costs will likely be high. Refining the module into several smaller modules should reduce the average cost of future changes. 
