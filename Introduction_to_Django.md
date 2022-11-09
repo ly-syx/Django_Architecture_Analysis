@@ -230,16 +230,20 @@ PostgreSQL, MariaDB, MySQL, Oracle, SQLite
 
 ## Scenario
 
-**Modifiability:**
+**A Modifiability Scenario:**
+The developer wishes to modify the rendered way to the home page at design time. And the modifications are successfully made within 5 hours.
 
-| Portion of Scenario | Possible Values                                              |
-| ------------------- | ------------------------------------------------------------ |
-| Source              | Developer, system administrator                              |
-| Stimulus            | Modify some functions                                        |
-| Artifact            | Code, data, interfaces                                       |
-| Environment         | Build time                                                   |
-| Response            | 1. Make modification<br />2. Test modification<br />3. Deploy modification |
-| Response Measure    | Measure by the follow function:<br />$Grade=Effort \div (w_1 \cdot time + w_2 \cdot time + w_3 \cdot Money) - w_4 \cdot Side\ Effect$ |
+
+| Portion of Scenario | Possible Values                              |
+| ------------------- | -------------------------------------------- |
+| Source              | Developer                                    |
+| Stimulus            | Wish to change the rendered way to home page |
+| Artifact            | Code                                         |
+| Environment         | Design time                                  |
+| Response            | Change code and unit test                    |
+| Response Measure    | In  5 hours                                  |
+
+![Modifiability_Scenario](Modifiability Scenario.png)
 
 
 
@@ -260,3 +264,19 @@ For modifiability:
     1. *Split module*:
 
         In Django, the project would be split into some small modules, such as views, models and templates. If the module being modified includes a great deal of capability, the modification costs will likely be high. Refining the module into several smaller modules should reduce the average cost of future changes. 
+        
+        
+
+Such as followed project:
+
+![Modifiability Tactic](Modifiability Tactic.png)
+
++ In the project, the various functions were encapsulated in different classes, and the classes with highly close related or similar functions were encapsulated in the same module file. 
+
+    For example, the code about processing cookies are encapsulated in the module named cookie.py.
+
+    
+
++ Different business modules were split into different packages clearly. 
+
+    For example contrib package contains system the system's configuration file; forms package contains the code about generating form and parsing form information.
