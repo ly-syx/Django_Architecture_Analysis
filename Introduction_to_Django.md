@@ -243,7 +243,9 @@ The developer wishes to modify the rendered way to the home page at design time.
 | Response            | Change code and unit test                    |
 | Response Measure    | In  5 hours                                  |
 
+
 <img src="modifiability scenario.png" alt="Modifiability_Scenario" style="zoom:80%;" />
+
 
 
 
@@ -273,7 +275,9 @@ For modifiability:
 
 Such as followed project:
 
+
 <img src="modifiability tactic.png" alt="Modifiability Tactic" style="zoom:80%;" />
+
 
 + In the project, the various functions were encapsulated in different classes, and the classes with highly close related or similar functions were encapsulated in the same module file. 
 
