@@ -243,7 +243,7 @@ The developer wishes to modify the rendered way to the home page at design time.
 | Response            | Change code and unit test                    |
 | Response Measure    | In  5 hours                                  |
 
-![Modifiability_Scenario](Modifiability Scenario.png)
+![Modifiability_Scenario](modifiability scenario.png)
 
 
 
@@ -273,7 +273,7 @@ For modifiability:
 
 Such as followed project:
 
-![Modifiability Tactic](Modifiability Tactic.png)
+![Modifiability Tactic](modifiability tactic.png)
 
 + In the project, the various functions were encapsulated in different classes, and the classes with highly close related or similar functions were encapsulated in the same module file. 
 
