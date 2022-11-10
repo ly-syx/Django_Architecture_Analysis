@@ -275,7 +275,6 @@ For modifiability:
 
 Such as followed project:
 
-
 <img src="modifiability tactic.png" alt="Modifiability Tactic" style="zoom:80%;" />
 
 
