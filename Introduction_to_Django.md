@@ -266,6 +266,10 @@ For modifiability:
         In Django, the project would be split into some small modules, such as views, models and templates. If the module being modified includes a great deal of capability, the modification costs will likely be high. Refining the module into several smaller modules should reduce the average cost of future changes. 
         
         
+        
+        <img src="./architecture diagram.png" style="zoom:65%;" />
+    
+    
 
 Such as followed project:
 
