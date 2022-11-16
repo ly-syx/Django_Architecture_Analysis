@@ -230,7 +230,8 @@ PostgreSQL, MariaDB, MySQL, Oracle, SQLite
 
 ## Scenario
 
-**A Modifiability Scenario:**
+### A Modifiability Scenario:
+
 The developer wishes to modify the rendered way to the home page at design time. And the modifications are successfully made within 5 hours.
 
 
@@ -243,15 +244,31 @@ The developer wishes to modify the rendered way to the home page at design time.
 | Response            | Change code and unit test                    |
 | Response Measure    | In  5 hours                                  |
 
-
 <img src="modifiability scenario.png" alt="Modifiability_Scenario" style="zoom:80%;" />
+
+### A Scalability Scenario:
+
+The developer wishes to add some new servers to the cluster of servers, so that the site could respond faster to more requests from customers with higher concurrency.
+
+
+| Portion of Scenario | Possible Values                                              |
+| ------------------- | ------------------------------------------------------------ |
+| Source              | Developer                                                    |
+| Stimulus            | Wish site could response faster to more requests concurrently |
+| Artifact            | Code, components                                             |
+| Environment         | Build time                                                   |
+| Response            | Add the new servers and deploy them                          |
+| Response Measure    | In 3 hours if renting cloud servers                          |
+
+<img src="scalability scenario.png" alt="Scalability_Scenario" style="zoom:50%;" />
+
 
 
 
 
 ## Tactic
 
-For modifiability:
+### For modifiability:
 
 + **Reduce Coupling**:
 
@@ -274,7 +291,6 @@ For modifiability:
 <div align=center><img src="./architecture diagram.png" style="zoom:45%;" /><img src="modifiability tactic.png" alt="Modifiability Tactic" style="zoom:50%;" /></div>
 
 
-
 + In the project, the various functions were encapsulated in different classes, and the classes with highly close related or similar functions were encapsulated in the same module file. 
 
     For example, the code about processing cookies are encapsulated in the module named cookie.py.
@@ -284,3 +300,25 @@ For modifiability:
 + Different business modules were split into different packages clearly. 
 
     For example contrib package contains system the system's configuration file; forms package contains the code about generating form and parsing form information.
+
+
+
+### For scalability:
+
+The web applications developed using Django have the ability to handle multiple client requests at the same time. Django projects are very scalable and can handle requests on . 
+
+1. Shared-nothing Architecture
+
+	Django designed the web framework to efficiently use the hardware in developers' system. With a shared-nothing architecture, Django separates components like the database layer (the models) and the application layer (the views). Hardware can be added at any level without affecting the rest of the system. More database servers or application servers are allowed to be added into your system, and Django will use these resources efficiently to handle multiple visitors.
+
+2. Cache System
+
+	Caching is the process of saving some web page data on the client’s server or on intermediary servers so that your Django app can process requests faster, increasing scale. Django offers a robust caching system with different levels of caching:
+
+	1. You can cache your entire website.
+	2. You can cache specific view function output.
+	3. You can cache specific content that is time consuming to create.
+
+	Django projects also work well with third-party caches. You can write code that gives hints about these caches and tells them which part of your application you want to cache.
+
+<div align=center><img src="./scalability_scenario.png" /></div>
