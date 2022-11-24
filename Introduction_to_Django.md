@@ -270,24 +270,19 @@ The developer wishes to add some new servers to the cluster of servers, so that 
 
 ### For modifiability:
 
-+ **Reduce Coupling**:
++ **Reduce Coupling** —— ***Encapsulate:***
 
-    1. *Encapsulate*:
+    In Django, the different functions would be encapsulate in different modules. And different modules interact and collaborate with each other through their interfaces to perform complex functions. For example, the WSGI module is responsible for handling API requests, and calling the corresponding business functions through the interfaces of the modules.  WSGI doesn't care about how these functions are implemented, it just needs to know which interface to call. Encapsulation reduces the probability that a change to one module propagates to other modules.
 
-        In Django, the different functions would be encapsulate in different modules. And different modules interact and collaborate with each other through their interfaces to perform complex functions. For example, the WSGI module is responsible for handling API requests, and calling the corresponding business functions through the interfaces of the modules.  WSGI doesn't care about how these functions are implemented, it just needs to know which interface to call. Encapsulation reduces the probability that a change to one module propagates to other modules.
+    
 
-        
++ **Reduce the Size of a Module** —— ***Split module:***
 
-+ **Reduce the Size of a Module**:
+    In Django, the project would be split into some small modules, such as views, models and templates. If the module being modified includes a great deal of capability, the modification costs will likely be high. Refining the module into several smaller modules should reduce the average cost of future changes. 
 
-    1. *Split module*:
-
-        In Django, the project would be split into some small modules, such as views, models and templates. If the module being modified includes a great deal of capability, the modification costs will likely be high. Refining the module into several smaller modules should reduce the average cost of future changes. 
-        
-        
-        
-        Such as followed project:
-        
+    
+    
+    Such as followed project:
 <div align=center><img src="./architecture diagram.png" style="zoom:45%;" /><img src="modifiability tactic.png" alt="Modifiability Tactic" style="zoom:50%;" /></div>
 
 
@@ -307,18 +302,35 @@ The developer wishes to add some new servers to the cluster of servers, so that 
 
 The web applications developed using Django have the ability to handle multiple client requests at the same time. Django projects are very scalable and can handle requests on . 
 
-1. Shared-nothing Architecture
++ **Shared-nothing Architecture**
 
-	Django designed the web framework to efficiently use the hardware in developers' system. With a shared-nothing architecture, Django separates components like the database layer (the models) and the application layer (the views). Hardware can be added at any level without affecting the rest of the system. More database servers or application servers are allowed to be added into your system, and Django will use these resources efficiently to handle multiple visitors.
-
-2. Cache System
-
-	Caching is the process of saving some web page data on the client’s server or on intermediary servers so that your Django app can process requests faster, increasing scale. Django offers a robust caching system with different levels of caching:
-
-	1. You can cache your entire website.
-	2. You can cache specific view function output.
-	3. You can cache specific content that is time consuming to create.
-
-	Django projects also work well with third-party caches. You can write code that gives hints about these caches and tells them which part of your application you want to cache.
+    Django designed the web framework to efficiently use the hardware in developers' system. With a shared-nothing architecture, Django separates components like the database layer (the models) and the application layer (the views). Hardware can be added at any level without affecting the rest of the system. More database servers or application servers are allowed to be added into your system, and Django will use these resources efficiently to handle multiple visitors.
 
 <div align=center><img src="./scalability_scenario.png" /></div>
+
++ **Cache Framework**
+
+    Caching is the process of saving some web page data on the client’s server or on intermediary servers so that your Django app can process requests faster, increasing scale. 
+
+    Django offers a robust caching system with different levels of caching:
+
+    1. **The per-site cache** —— You can cache your entire website:
+
+        > Once the cache is set up, the simplest way to use caching is to cache entire site.
+
+    2. **The per-view cache** —— You can cache specific view function output:
+
+        > A more granular way to use the caching framework is by caching the output of individual views.
+
+    3. **The low-level cache API** —— You can cache specific content that is time consuming to create:
+    
+        > Sometimes, caching an entire rendered page doesn’t gain you very much and is, in fact, inconvenient overkill.
+        >
+        > Perhaps, for instance, your site includes a view whose results depend on several expensive queries, the results of which change at different intervals. In this case, it would not be ideal to use the full-page caching that the per-site or per-view cache strategies offer, because you wouldn’t want to cache the entire result (since some of the data changes often), but you’d still want to cache the results that rarely change.
+        >
+        > For cases like this, Django exposes a low-level cache API. You can use this API to store objects in the cache with any level of granularity you like. You can cache any Python object that can be pickled safely: strings, dictionaries, lists of model objects, and so forth. (Most common Python objects can be pickled; refer to the Python documentation for more information about pickling.)
+
+    Django projects also work well with third-party caches. You can write code that gives hints about these caches and tells them which part of your application you want to cache.
+
+    <div align=center><img src="./scalability_scenario2.png" /></div>
+
