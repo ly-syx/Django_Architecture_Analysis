@@ -48,7 +48,7 @@ Django is a high-level Python web framework that encourages rapid development an
 	**T** is for "Template": responsible for how the page (HTML) is presented to the user.
 	**V** is for "View": takes care of the logic business and calls Model and Template when appropriate.
 
-<img src="./architecture diagram.png" style="zoom:65%;" />
+<img src="Django_architecture_document_imgs/architecture diagram.png" style="zoom:65%;" />
 
 
 
@@ -144,7 +144,7 @@ Django is a high-level Python web framework that encourages rapid development an
 
 ### Architecture Diagram
 
-<img src="./architecture diagram.png" style="zoom:65%;" />
+<img src="./Django_architecture_document_imgs/architecture diagram.png" style="zoom:65%;" />
 
 
 
@@ -244,7 +244,7 @@ The developer wishes to modify the rendered way to the home page at design time.
 | Response            | Change code and unit test                    |
 | Response Measure    | In  5 hours                                  |
 
-<img src="modifiability scenario.png" alt="Modifiability_Scenario" style="zoom:80%;" />
+<img src="Django_architecture_document_imgs/modifiability scenario.png" alt="Modifiability_Scenario" style="zoom:80%;" />
 
 ### A Scalability Scenario:
 
@@ -260,7 +260,7 @@ The developer wishes to add some new servers to the cluster of servers, so that 
 | Response            | Add the new servers and deploy them                          |
 | Response Measure    | In 3 hours if renting cloud servers                          |
 
-<img src="scalability scenario.png" alt="Scalability_Scenario" style="zoom:50%;" />
+<img src="Django_architecture_document_imgs/scalability scenario.png" alt="Scalability_Scenario" style="zoom:75%;" />
 
 
 
@@ -270,20 +270,23 @@ The developer wishes to add some new servers to the cluster of servers, so that 
 
 ### For modifiability:
 
++ **Reduce the Size of a Module** —— ***Split module:***
+
+    In Django, the project would be split into some small modules, such as views, models and templates. If the module being modified includes a great deal of capability, the modification costs will likely be high. Refining the module into several smaller modules should reduce the average cost of future changes. 
+
 + **Reduce Coupling** —— ***Encapsulate:***
 
     In Django, the different functions would be encapsulate in different modules. And different modules interact and collaborate with each other through their interfaces to perform complex functions. For example, the WSGI module is responsible for handling API requests, and calling the corresponding business functions through the interfaces of the modules.  WSGI doesn't care about how these functions are implemented, it just needs to know which interface to call. Encapsulation reduces the probability that a change to one module propagates to other modules.
 
     
 
-+ **Reduce the Size of a Module** —— ***Split module:***
-
-    In Django, the project would be split into some small modules, such as views, models and templates. If the module being modified includes a great deal of capability, the modification costs will likely be high. Refining the module into several smaller modules should reduce the average cost of future changes. 
-
     
-    
+
     Such as followed project:
-<div align=center><img src="./architecture diagram.png" style="zoom:45%;" /><img src="modifiability tactic.png" alt="Modifiability Tactic" style="zoom:50%;" /></div>
+
+<div align=center><img src="./Django_architecture_document_imgs/architecture diagram.png" style="zoom:65%;" /><img src="./Django_architecture_document_imgs/modifiability tactic.png" alt="Modifiability Tactic" style="zoom:80%;" /></div>
+
+
 
 
 + In the project, the various functions were encapsulated in different classes, and the classes with highly close related or similar functions were encapsulated in the same module file. 
@@ -300,13 +303,50 @@ The developer wishes to add some new servers to the cluster of servers, so that 
 
 ### For scalability:
 
-The web applications developed using Django have the ability to handle multiple client requests at the same time. Django projects are very scalable and can handle requests on . 
+The web applications developed using Django have the ability to handle multiple client requests at the same time. Django projects are very scalable and can handle requests on. 
 
 + **Shared-nothing Architecture**
 
+    + **Introduction of shared-nothing architecure:**
+
+    > **Shared Nothing Architecture (SNA) is a distributed computing architecture** that consists of multiple independent nodes that do not share resources. The nodes are independent and self-sufficient, as they have their own disk space and memory.
+    >
+    > In such a system, data sets/workloads are divided into smaller sets (nodes) that are distributed to different parts of the system. Each node has its own memory, storage and independent input/output interfaces. It communicates and synchronizes with other nodes through a high-speed interconnection network. Such connectivity ensures low latency, high bandwidth and high availability (backup interconnects can be used in case of failure of the primary node).
+    >
+    > **Since the data is horizontally partitioned, the system supports incremental growth.** You can add new nodes to horizontally expand the distributed system and increase the transmission capacity.
+    >
+    > 
+    >
+    > **Comparing Shared Everything, Shared Storage, and Shared Nothing:**
+    >
+    > **Shared Storage Architecture** is a distributed computing architecture where all nodes in a system are **linked to the same disk device**, but have their own private memory. The shared data is accessible from all cluster nodes and typically represents a shared disk (e.g., a database) or a shared file system (e.g., a storage area network or network-attached storage). The shared disk architecture is best suited for use cases where data partitioning is not possible. It is much less scalable than SNA.
+    >
+    > **Shared Everything architecture** consists of nodes that **share all resources within the system**. Each node has access to the same computational resources and shared storage. The main idea behind this system is to maximize the use of resources. The disadvantage is that shared resources can also lead to performance degradation due to contention.
+    >
+    > The following image shows the difference between the three most dominant sharing structures - **Shared Everything, Shared Storage, and Shared Nothing**:
+    >
+    > Unlike the others, SNA has no shared resources. The only thing that connects the nodes is the network layer, which manages the system and the communication between the nodes.
+    >
+    > <div align=center><img src="./Django_architecture_document_imgs/shared-nothing-architecture-diagram.png" /></div>
+    >
+    > **The advantages and disadvantages** of the shared-nothing architecture compared to other architectures are as follows:
+    >
+    > **Advantages:**
+    >
+    > + Easier to scale
+    > + Eliminate the system failure from single node failures
+    > + No downtime for upgrades and updates of server
+    >
+    > **Disadvantages:**
+    >
+    > + More cost
+    > + Reduced performance
+
++ **Django with a shared-nothing architecure:**
+
     Django designed the web framework to efficiently use the hardware in developers' system. With a shared-nothing architecture, Django separates components like the database layer (the models) and the application layer (the views). Hardware can be added at any level without affecting the rest of the system. More database servers or application servers are allowed to be added into your system, and Django will use these resources efficiently to handle multiple visitors.
 
-<div align=center><img src="./scalability_scenario.png" /></div>
+<div align=center><img src="./Django_architecture_document_imgs/scalability_scenario.png" /></div>
 
 + **Cache Framework**
 
@@ -332,5 +372,5 @@ The web applications developed using Django have the ability to handle multiple 
 
     Django projects also work well with third-party caches. You can write code that gives hints about these caches and tells them which part of your application you want to cache.
 
-    <div align=center><img src="./scalability_scenario2.png" /></div>
+    <div align=center><img src="./Django_architecture_document_imgs/scalability_scenario2.png" /></div>
 
