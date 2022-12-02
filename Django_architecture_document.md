@@ -1,6 +1,14 @@
-# Introduction to Django
+# Django Architecture Document
 
-Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.
+**Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.**
+
+
+
+## Contributors & their participating parts:
+
++ Yun Lei: Feature, Quality attribute, Key Drivers, Architecture, Decision View, Stakeholder, Technical Context, Scenario, Tactic, Architectural Evaluation for Scenarios
++ Yuxiang Dai: Feature, Quality attribute, Key Drivers, Stakeholder and the Specific Concerns, Technical Context, Scenario
++ Yifan Liao: Context, Scenario, Tactic
 
 
 
@@ -242,7 +250,7 @@ The developer wishes to modify the rendered way to the home page at design time.
 | Artifact            | Code                                         |
 | Environment         | Design time                                  |
 | Response            | Change code and unit test                    |
-| Response Measure    | In  5 hours                                  |
+| Response Measure    | In 5 hours                                   |
 
 <img src="Django_architecture_document_imgs/modifiability scenario.png" alt="Modifiability_Scenario" style="zoom:80%;" />
 
@@ -276,7 +284,7 @@ The developer wishes to add some new servers to the cluster of servers, so that 
 
 + **Reduce Coupling** —— ***Encapsulate:***
 
-    In Django, the different functions would be encapsulate in different modules. And different modules interact and collaborate with each other through their interfaces to perform complex functions. For example, the WSGI module is responsible for handling API requests, and calling the corresponding business functions through the interfaces of the modules.  WSGI doesn't care about how these functions are implemented, it just needs to know which interface to call. Encapsulation reduces the probability that a change to one module propagates to other modules.
+    In Django, the different functions would be encapsulate in different modules. And different modules interact and collaborate with each other through their interfaces to perform complex functions. For example, the WSGI module is responsible for handling API requests, and calling the corresponding business functions through the interfaces of the modules. WSGI doesn't care about how these functions are implemented, it just needs to know which interface to call. Encapsulation reduces the probability that a change to one module propagates to other modules.
 
     
 
@@ -309,38 +317,38 @@ The web applications developed using Django have the ability to handle multiple 
 
     + **Introduction of shared-nothing architecure:**
 
-    > **Shared Nothing Architecture (SNA) is a distributed computing architecture** that consists of multiple independent nodes that do not share resources. The nodes are independent and self-sufficient, as they have their own disk space and memory.
-    >
-    > In such a system, data sets/workloads are divided into smaller sets (nodes) that are distributed to different parts of the system. Each node has its own memory, storage and independent input/output interfaces. It communicates and synchronizes with other nodes through a high-speed interconnection network. Such connectivity ensures low latency, high bandwidth and high availability (backup interconnects can be used in case of failure of the primary node).
-    >
-    > **Since the data is horizontally partitioned, the system supports incremental growth.** You can add new nodes to horizontally expand the distributed system and increase the transmission capacity.
-    >
-    > 
-    >
-    > **Comparing Shared Everything, Shared Storage, and Shared Nothing:**
-    >
-    > **Shared Storage Architecture** is a distributed computing architecture where all nodes in a system are **linked to the same disk device**, but have their own private memory. The shared data is accessible from all cluster nodes and typically represents a shared disk (e.g., a database) or a shared file system (e.g., a storage area network or network-attached storage). The shared disk architecture is best suited for use cases where data partitioning is not possible. It is much less scalable than SNA.
-    >
-    > **Shared Everything architecture** consists of nodes that **share all resources within the system**. Each node has access to the same computational resources and shared storage. The main idea behind this system is to maximize the use of resources. The disadvantage is that shared resources can also lead to performance degradation due to contention.
-    >
-    > The following image shows the difference between the three most dominant sharing structures - **Shared Everything, Shared Storage, and Shared Nothing**:
-    >
-    > Unlike the others, SNA has no shared resources. The only thing that connects the nodes is the network layer, which manages the system and the communication between the nodes.
-    >
-    > <div align=center><img src="./Django_architecture_document_imgs/shared-nothing-architecture-diagram.png" /></div>
-    >
-    > **The advantages and disadvantages** of the shared-nothing architecture compared to other architectures are as follows:
-    >
-    > **Advantages:**
-    >
-    > + Easier to scale
-    > + Eliminate the system failure from single node failures
-    > + No downtime for upgrades and updates of server
-    >
-    > **Disadvantages:**
-    >
-    > + More cost
-    > + Reduced performance
+        > **Shared Nothing Architecture (SNA) is a distributed computing architecture** that consists of multiple independent nodes that do not share resources. The nodes are independent and self-sufficient, as they have their own disk space and memory.
+        >
+        > In such a system, data sets/workloads are divided into smaller sets (nodes) that are distributed to different parts of the system. Each node has its own memory, storage and independent input/output interfaces. It communicates and synchronizes with other nodes through a high-speed interconnection network. Such connectivity ensures low latency, high bandwidth and high availability (backup interconnects can be used in case of failure of the primary node).
+        >
+        > **Since the data is horizontally partitioned, the system supports incremental growth.** You can add new nodes to horizontally expand the distributed system and increase the transmission capacity.
+        >
+        > 
+        >
+        > **Comparing Shared Everything, Shared Storage, and Shared Nothing:**
+        >
+        > **Shared Storage Architecture** is a distributed computing architecture where all nodes in a system are **linked to the same disk device**, but have their own private memory. The shared data is accessible from all cluster nodes and typically represents a shared disk (e.g., a database) or a shared file system (e.g., a storage area network or network-attached storage). The shared disk architecture is best suited for use cases where data partitioning is not possible. It is much less scalable than SNA.
+        >
+        > **Shared Everything architecture** consists of nodes that **share all resources within the system**. Each node has access to the same computational resources and shared storage. The main idea behind this system is to maximize the use of resources. The disadvantage is that shared resources can also lead to performance degradation due to contention.
+        >
+        > The following image shows the difference between the three most dominant sharing structures - **Shared Everything, Shared Storage, and Shared Nothing**:
+        >
+        > Unlike the others, SNA has no shared resources. The only thing that connects the nodes is the network layer, which manages the system and the communication between the nodes.
+        >
+        > <div align=center><img src="./Django_architecture_document_imgs/shared-nothing-architecture-diagram.png" /></div>
+        >
+        > **The advantages and disadvantages** of the shared-nothing architecture compared to other architectures are as follows:
+        >
+        > **Advantages:**
+        >
+        > + Easier to scale
+        > + Eliminate the system failure from single node failures
+        > + No downtime for upgrades and updates of server
+        >
+        > **Disadvantages:**
+        >
+        > + More cost
+        > + Reduced performance
 
 + **Django with a shared-nothing architecure:**
 
@@ -373,4 +381,20 @@ The web applications developed using Django have the ability to handle multiple 
     Django projects also work well with third-party caches. You can write code that gives hints about these caches and tells them which part of your application you want to cache.
 
     <div align=center><img src="./Django_architecture_document_imgs/scalability_scenario2.png" /></div>
+
+## Architectural Evaluation for Scenarios
+
+### Architectural evaluation of scenario 1:
+
+| Scenario #1             | Update the rendered way                                      |                                          |                                                              |                                                              |
+| ----------------------- | ------------------------------------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Attribute(s)            | Modifiability                                                |                                          |                                                              |                                                              |
+| Environment             | Design time                                                  |                                          |                                                              |                                                              |
+| Stimulus                | Wish to change the rendered way to home page                 |                                          |                                                              |                                                              |
+| Response                | Change codes and unit test                                   |                                          |                                                              |                                                              |
+| Architectural decisions | Tradeoff                                                     | Sensitivity                              | Risk                                                         | Non-risk                                                     |
+| Split Module(MVT Model) | Load time versus modifiability.                              |                                          | Add a new feature that is not belonging to any existing module. |                                                              |
+| Encapsulate             |                                                              | This makes the program less transparent. |                                                              | Encapsulation reduces the probability that a change to one module propagates to other modules. |
+| Reasoning               | 1. Refining the module into several smaller modules should reduce the average cost of future changes.<br /><br />2. Responsibilities in modules can work in concert without excessive dependence on other modules. And different modules interact and collaborate with each other through their interfaces to perform complex functions. This is beneficial to modifiability. |                                          |                                                              |                                                              |
+| Architecture model      | ![earliest architecture diagram](Django_architecture_document_imgs/mvt architecture diagram.png) |                                          |                                                              |                                                              |
 
